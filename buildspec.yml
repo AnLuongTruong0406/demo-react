@@ -26,4 +26,5 @@ artifacts:
     - package.json
     - appspec.yml
     - scripts/**/*
+    - template-export.yml
     - template-configuration.json
