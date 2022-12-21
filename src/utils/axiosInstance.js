@@ -8,6 +8,8 @@ export const axiosInstance = axios.create({
 export const get = async (url, options = {}) => {
   try {
     const response = await axiosInstance.get(url, options);
+    console.log("api call ", url);
+
     return response.data;
   } catch (err) {
     console.log(err);
