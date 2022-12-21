@@ -1,17 +1,16 @@
 {
-  "name": "tiktok",
-  "private": true,
-  "version": "0.0.0",
+  "name": "react-demo",
+  "version": "0.1.0",
   "description": "Tiktok clone",
   "main": "vite.config.js",
   "keywords": [
     "tiktok",
     "tiktok-clone"
   ],
-  "author": "Tran Huu Toan",
+  "author": "demo",
   "license": "ISC",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
