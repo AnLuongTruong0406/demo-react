@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../features/authentication/userAction";
 import { useNavigate } from "react-router-dom";
 import WrapperAuth from "../../components/WrapperAuth";
+import useWindowSize from "hooks/useWindowSize";
 
 function Navbar() {
   const { user } = useSelector((state) => state.user);
@@ -32,6 +33,7 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
+  const {width} = useWindowSize();
 
   const isLoginPage = location.pathname.includes("/login");
 
@@ -60,7 +62,7 @@ function Navbar() {
 
   return (
     <header className={styles.navbar}>
-      <div className={styles.navbar_wrapper}>
+      <div className={styles.navbar_wrapper} style={width <= 768 ? {justifyContent: 'center'} : {}}>
         <Link to={config.routes.home} className={styles.logo}>
           <img src={theme === "dark" ? LogoDark : Logo} alt="Tiktok" />
         </Link>
