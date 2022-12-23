@@ -18,11 +18,12 @@
     flex: 1 1 624px;
 
     .info_containter {
-      margin-right: 114px;
-
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
       .info {
         overflow: hidden;
-
+        order: 1;
         .author_container {
           display: flex;
           flex-direction: row;
@@ -86,7 +87,6 @@
 
       .follow_button {
         right: 0;
-        position: absolute;
         top: 8px;
       }
     }
