@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styles from "./Sidebar.module.scss";
@@ -6,14 +6,23 @@ import { config } from "../../config";
 import Button from "../../components/Core/Button";
 import SuggestedList from "./SuggestedList";
 import FollowingList from "./FollowingList";
+import useWindowSize from "hooks/useWindowSize";
 
 import Menu from "./Menu/Menu";
 
 function Sidebar() {
   const { user } = useSelector((state) => state.user);
 
+  const {width} = useWindowSize()
+  const [isOpenSidebar, setIsOpenSidebar] = useState(width >= 1024);
+
+  useEffect(()=>{
+    setIsOpenSidebar(width>=1024)
+  },[width])
+
   return (
-    <div className={styles.sidebar}>
+    isOpenSidebar ? 
+    (<div className={styles.sidebar}>
       <div className={styles.sidebar_scrollbar}>
         <Menu />
         <hr className={styles.hr} />
@@ -36,18 +45,10 @@ function Sidebar() {
         <SuggestedList />
 
         {user && <FollowingList />}
-
-        <div className={styles.contact}>
-          <p>Contact me</p>
-          <a
-            className={styles.facebook}
-            href="https://www.facebook.com/htoann/"
-          >
-            Trần Hữu Toàn
-          </a>
-        </div>
       </div>
-    </div>
+    </div>) : (
+      <div></div>
+    )
   );
 }
 

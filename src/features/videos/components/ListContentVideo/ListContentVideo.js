@@ -38,7 +38,6 @@ function ListContentVideo({ type }) {
 
   return (
     <div className={styles.main_container}>
-      <h1>Hello</h1>
       <br/>
       <InfiniteScroll
         dataLength={listVideo.length}

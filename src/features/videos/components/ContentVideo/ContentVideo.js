@@ -15,10 +15,15 @@ import handleLikeFunc from "../../../../utils/handleLike";
 import Video from "../Video";
 import WrapperAuth from "../../../../components/WrapperAuth";
 import Image from "../../../../components/Image";
+import useWindowSize from "hooks/useWindowSize";
 
 function ContentVideo({ data }) {
   const [content, setContent] = useState(data);
   const [user, setUser] = useState(content.user);
+
+  const {width} = useWindowSize()
+
+
   const profileLink = config.routes.profileLink(user.nickname);
 
   useEffect(() => {
@@ -86,7 +91,7 @@ function ContentVideo({ data }) {
                 // prevPath: location.pathname,
               }}
             >
-              <div className={styles.video_card}>
+              <div className={styles.video_card} style={width <= 768 ? {maxWidth: 200 } : {}}>
                 <Video data={content} />
               </div>
             </Link>
